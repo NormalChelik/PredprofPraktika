@@ -22,11 +22,11 @@ public class DB : MonoBehaviour
     }
 
     // Update is called once per frame
-    private void SaveData(string value)
+    private void SaveData()
     {
         Polet user = new Polet(1, 1);
         string json = JsonUtility.ToJson(user);
-        dbref.Child("users").Child(value).SetRawJsonValueAsync(json);
+        dbref.Child("main").Child("points").SetRawJsonValueAsync(json);
     }
 
     public IEnumerator LoadFromServer(string url)
@@ -42,6 +42,7 @@ public class DB : MonoBehaviour
         else
         {
             Debug.Log(www.downloadHandler.text);
+            distance.Sort();
         }
     }
 }
